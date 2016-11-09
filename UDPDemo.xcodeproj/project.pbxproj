@@ -12,6 +12,9 @@
 		B5AA7C6A1DD3526F0007105C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5AA7C681DD3526F0007105C /* Main.storyboard */; };
 		B5AA7C6C1DD3526F0007105C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5AA7C6B1DD3526F0007105C /* Assets.xcassets */; };
 		B5AA7C6F1DD3526F0007105C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5AA7C6D1DD3526F0007105C /* LaunchScreen.storyboard */; };
+		B5AA7C7B1DD356000007105C /* ysocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AA7C781DD356000007105C /* ysocket.swift */; };
+		B5AA7C7C1DD356000007105C /* yudpsocket.c in Sources */ = {isa = PBXBuildFile; fileRef = B5AA7C791DD356000007105C /* yudpsocket.c */; };
+		B5AA7C7D1DD356000007105C /* yudpsocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AA7C7A1DD356000007105C /* yudpsocket.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,10 @@
 		B5AA7C6B1DD3526F0007105C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5AA7C6E1DD3526F0007105C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B5AA7C701DD3526F0007105C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5AA7C771DD356000007105C /* UDPDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UDPDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		B5AA7C781DD356000007105C /* ysocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ysocket.swift; sourceTree = "<group>"; };
+		B5AA7C791DD356000007105C /* yudpsocket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = yudpsocket.c; sourceTree = "<group>"; };
+		B5AA7C7A1DD356000007105C /* yudpsocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = yudpsocket.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +61,7 @@
 		B5AA7C631DD3526E0007105C /* UDPDemo */ = {
 			isa = PBXGroup;
 			children = (
+				B5AA7C761DD355D60007105C /* Socket */,
 				B5AA7C641DD3526E0007105C /* AppDelegate.swift */,
 				B5AA7C661DD3526F0007105C /* ViewController.swift */,
 				B5AA7C681DD3526F0007105C /* Main.storyboard */,
@@ -62,6 +70,17 @@
 				B5AA7C701DD3526F0007105C /* Info.plist */,
 			);
 			path = UDPDemo;
+			sourceTree = "<group>";
+		};
+		B5AA7C761DD355D60007105C /* Socket */ = {
+			isa = PBXGroup;
+			children = (
+				B5AA7C781DD356000007105C /* ysocket.swift */,
+				B5AA7C791DD356000007105C /* yudpsocket.c */,
+				B5AA7C7A1DD356000007105C /* yudpsocket.swift */,
+				B5AA7C771DD356000007105C /* UDPDemo-Bridging-Header.h */,
+			);
+			name = Socket;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -97,6 +116,7 @@
 					B5AA7C601DD3526E0007105C = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 6X639D7J64;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -137,6 +157,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5AA7C7C1DD356000007105C /* yudpsocket.c in Sources */,
+				B5AA7C7D1DD356000007105C /* yudpsocket.swift in Sources */,
+				B5AA7C7B1DD356000007105C /* ysocket.swift in Sources */,
 				B5AA7C671DD3526F0007105C /* ViewController.swift in Sources */,
 				B5AA7C651DD3526F0007105C /* AppDelegate.swift in Sources */,
 			);
@@ -261,11 +284,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 6X639D7J64;
 				INFOPLIST_FILE = UDPDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = allen.UDPDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "UDPDemo/UDPDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -274,11 +300,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 6X639D7J64;
 				INFOPLIST_FILE = UDPDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = allen.UDPDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "UDPDemo/UDPDemo-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
